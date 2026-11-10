@@ -66,6 +66,7 @@ src/
 ├── styles/                      ← global styles, token definitions (CSS custom props)
 └── environments/                ← environment.ts / environment.prod.ts (API base URL)
 
+test/                            ← mirrors src/ (see Test structure)
 Dockerfile                       ← multi-stage: build (node) → nginx:alpine static serve
 nginx.conf                       ← SPA fallback (try_files → /index.html)
 docker/
@@ -81,11 +82,41 @@ components/         ← presentational components for this feature
 services/          ← feature logic + HTTP calls (via the core api.service)
 models/            ← feature TS interfaces
 validators/        ← reactive-form validators / Zod-equivalent schemas
-tests/             ← component + service specs
 ```
 
-Every file a Builder creates must fit this tree. New top-level folders require
+Every file a Builder creates must fit this tree; test files follow
+**Test structure** below. New top-level folders require
 developer approval first.
+
+## Test structure (HARD)
+
+Applies to every project built from this template. QA rejects a task whose test files break any rule below.
+
+```
+src/app/core/auth/auth.service.ts                 → test/app/core/auth/auth.service.spec.ts
+src/app/features/users/pages/users.page.ts        → test/app/features/users/pages/users.page.spec.ts
+src/app/shared/components/button/button.component.ts
+  → test/app/shared/components/button/button.component.spec.ts
+```
+
+```
+test/
+├── helpers.ts                 ← TestBed setup, providers, mocks, fixtures
+├── app/
+│   ├── core/                  ← mirrors src/app/core: http/, interceptors/, guards/, auth/
+│   ├── shared/                ← mirrors src/app/shared: components/, directives/, pipes/
+│   └── features/<name>/       ← mirrors the feature: pages/, components/, services/, validators/
+└── e2e/                       ← <flow>.e2e-spec.ts (Playwright)
+```
+
+1. **One location only.** Every test file lives under `test/` — never next to a source file, never inside a module/feature folder, never in a second test folder.
+2. **Mirror the source tree.** `test/` mirrors `src/` one-to-one. Same folder names, same file names, plus the `.spec.ts` suffix. This overrides the Angular CLI default of a spec beside each component — generate with `--skip-tests` and create the spec in `test/`.
+3. **One spec per source file**, at its mirrored path. Moving or renaming a source file moves or renames its spec in the same task.
+4. **No catch-all spec.** Logic shared across the app is tested at the mirrored path of the file that owns it — never in a "global" / "misc" / "utils" spec file.
+5. **Shared test code** lives in `test/helpers.ts` (TestBed setup, providers, mocks, fixtures). Specs never import from other specs.
+6. **End-to-end tests** live only in `test/e2e/` (Playwright), named `<flow>.e2e-spec.ts`. Unit/integration specs never go there, and e2e specs never go anywhere else.
+7. **Runner config follows the folder.** The unit runner includes only `test/**/*.spec.ts` (excluding `test/e2e/`); Playwright `testDir` is `test/e2e`; coverage measures `src/`. If the config disagrees, fix it in the same task.
+8. **Legacy layout is drift, not precedent.** If existing code or a feature spec places tests elsewhere (e.g. a module's own `tests/` folder), new and modified tests still go to the mirrored path; moving the old ones is its own task — surface the drift to the developer, never silently mass-move files.
 
 ## Boundary rules (HARD)
 
