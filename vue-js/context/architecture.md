@@ -106,13 +106,13 @@ Source → spec mapping:
 
 ```
 src/main.ts                                       → test/main.spec.ts
-src/features/auth/components/SignInForm.vue       → test/features/auth/components/SignInForm.spec.ts
+src/features/auth/components/sign-in-form.vue      → test/features/auth/components/sign-in-form.spec.ts
 src/shared/hooks/use-pagination.ts                → test/shared/hooks/use-pagination.spec.ts
 ```
 
 1. **One location only.** Every test file lives under `test/` at the project root — never next to a source file, never inside a module/feature folder, never in a second test folder.
 2. **Fixed root files — nothing else at the root.** `main.spec.ts` covers bootstrap only: `createApp` with every plugin installs and mounts. `app.spec.ts` covers the app shell only: `App.vue`, `router.ts` layouts, guards, not-found. `setup.ts` makes the suite self-contained: DOM matchers, global mocks (fetch/API client, storage, `matchMedia`, i18n), test env values — loaded by the runner as its setup file; no developer `.env` is required. `helpers.ts` holds mount-with-plugins (pinia, router, i18n, query client), fixtures and mocks — no assertions. Besides these four, the root holds only mirrored folders and `e2e/`.
-3. **Mirror the source tree.** Every other spec sits at the path of the file it tests: same folder names, same file name, plus the `.spec.ts` suffix (`*.test.ts` is not used). (`SignInForm.vue` → `SignInForm.spec.ts`)
+3. **Mirror the source tree.** Every other spec sits at the path of the file it tests: same folder names, same file name, plus the `.spec.ts` suffix (`*.test.ts` is not used). (`sign-in-form.vue` → `sign-in-form.spec.ts`)
 4. **One spec per source file.** Moving or renaming a source file moves or renames its spec in the same task.
 5. **No catch-all spec.** Logic shared across the app is tested at the mirrored path of the file that owns it — never in a "global" / "misc" / "utils" spec.
 6. **Specs import only source code and the helpers file** — never another spec, never a fixture defined inside another spec.

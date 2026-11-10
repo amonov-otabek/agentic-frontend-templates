@@ -45,7 +45,7 @@ served as a standalone Node server. It mirrors the backend's domain modules surf
 | --- | --- |
 | user | standard authenticated account |
 | admin | elevated access to admin surfaces (users, audit) |
-| _(RBAC)_ | role/permission gating mirrors the backend; `use-permission` hook drives conditional UI |
+| _(RBAC)_ | role/permission gating mirrors the backend; `usePermission` hook drives conditional UI |
 
 ## Key constraints
 

@@ -17,13 +17,13 @@ and a paginated event list — fetched through TanStack Query and rendered with
 ## Scope
 
 - **Route:** `src/app/[locale]/(protected)/analytics/page.tsx` (thin) → renders
-  `features/analytic/pages/analytics-page.tsx`.
-- **Summary:** `stat-cards.tsx` renders the dashboard summary metrics
+  `features/analytic/pages/AnalyticsPage.tsx`.
+- **Summary:** `StatCards.tsx` renders the dashboard summary metrics
   (`DashboardSummary`).
-- **Chart:** `events-chart.tsx` renders an events trend via `recharts`
+- **Chart:** `EventsChart.tsx` renders an events trend via `recharts`
   (`shared/components/ui/chart`).
-- **Event list:** `event-list.tsx` paginated table of `AnalyticsEvent` rows with
-  `use-pagination` + `pager`.
+- **Event list:** `EventList.tsx` paginated table of `AnalyticsEvent` rows with
+  `usePagination` + `pager`.
 - **Queries:** `queries/analytics.queries.ts` — `useDashboard`, `useEvents(query)`
   with a key factory; list invalidation on relevant mutations (read-mostly slice).
 - **Types:** `types/analytics.types.ts` — `DashboardSummary`, `AnalyticsEvent`,
@@ -42,7 +42,7 @@ Base `${NEXT_PUBLIC_API_URL}/api/v1`, envelope; called only from
 
 - `features/analytic/components/{stat-cards,events-chart,event-list}.tsx`.
 - Shared UI: `card`, `chart` (recharts wrapper), `table`, `skeleton`, `empty`,
-  `pagination`/`pager`; `use-pagination` hook; dashboard shell from `(protected)`.
+  `pagination`/`pager`; `usePagination` hook; dashboard shell from `(protected)`.
 
 ## Acceptance criteria
 
@@ -51,7 +51,7 @@ Base `${NEXT_PUBLIC_API_URL}/api/v1`, envelope; called only from
 - [ ] Stat cards render `DashboardSummary` from `GET /analytics/dashboard`.
 - [ ] Events chart renders the trend via `recharts` from the events data.
 - [ ] Event list paginates against `GET /analytics/events` using `meta`
-      (total/page/limit) + `use-pagination`.
+      (total/page/limit) + `usePagination`.
 - [ ] Loading / empty / error states handled on each panel; errors branch on
       `error.code`.
 - [ ] Tokens-only styling, a11y, lint, typecheck, build, and tests pass.

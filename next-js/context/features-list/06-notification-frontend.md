@@ -17,11 +17,11 @@ TanStack Query in the dashboard shell.
 ## Scope
 
 - **Route:** `src/app/[locale]/(protected)/notifications/page.tsx` (thin) → renders
-  `features/notification/pages/notifications-page.tsx`.
-- **Feed** (`notification-list.tsx`): paginated `AppNotification` rows, an
+  `features/notification/pages/NotificationsPage.tsx`.
+- **Feed** (`NotificationList.tsx`): paginated `AppNotification` rows, an
   unread-only filter, per-row mark-read, and a mark-all-read action; unread count
   badge.
-- **Preferences** (`preferences-form.tsx`): edit channel preferences
+- **Preferences** (`PreferencesForm.tsx`): edit channel preferences
   (`NotificationPreferences`) and save.
 - **Queries:** `queries/notification.queries.ts` — `useNotifications(query)`,
   `useUnreadCount`, `useMarkRead`, `useMarkAllRead`, `usePreferences`,
@@ -48,7 +48,7 @@ Base `${NEXT_PUBLIC_API_URL}/api/v1`, envelope; called only from
 - `features/notification/components/{notification-list,preferences-form}.tsx`.
 - Shared UI: `card`, `badge` (unread), `switch`/`checkbox` (preferences), `button`,
   `table`/`item`, `pagination`/`pager`, `empty`, `skeleton`, `sonner`;
-  `use-pagination`, `use-toast` hooks.
+  `usePagination`, `use-toast` hooks.
 
 ## Acceptance criteria
 

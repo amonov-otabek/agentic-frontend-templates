@@ -39,13 +39,13 @@ Base `/api/v1/audit`, envelope `{ success, data, meta? }`.
 
 - `features/audit/components/{audit-log-table,alert-table}`.
 - shadcn `table`, `card`, `tabs`, `badge`, `select`/`native-select`, `button`,
-  `skeleton`, `empty`, `sonner`; widgets `pager`; `shared/hooks/use-pagination`;
-  `shared/hooks/use-permission` (gating); `DashboardLayout`.
+  `skeleton`, `empty`, `sonner`; widgets `pager`; `shared/hooks/usePagination`;
+  `shared/hooks/usePermission` (gating); `DashboardLayout`.
 
 ## Acceptance criteria
 
 - [ ] `/audit` renders behind the auth guard (unauthenticated → `/sign-in`) and is
-      role-gated via `use-permission`.
+      role-gated via `usePermission`.
 - [ ] The audit-log table paginates and filters by `userId` / `action` / `entity`.
 - [ ] The alert table paginates and filters by `severity` / `resolved`.
 - [ ] Resolving an alert calls `PATCH /audit/alerts/:id/resolve`, invalidates the alerts

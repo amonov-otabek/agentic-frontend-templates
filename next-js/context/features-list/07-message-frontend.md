@@ -17,10 +17,10 @@ Query in the dashboard shell.
 ## Scope
 
 - **Route:** `src/app/[locale]/(protected)/messages/page.tsx` (thin) → renders
-  `features/message/pages/messages-page.tsx`.
-- **Compose** (`message-compose-form.tsx`): Zod-validated form — channel
+  `features/message/pages/MessagesPage.tsx`.
+- **Compose** (`MessageComposeForm.tsx`): Zod-validated form — channel
   (`email` | `sms`), recipient, subject/body — calling `createMessage`.
-- **List** (`message-list.tsx`): paginated `Message` rows with a status filter
+- **List** (`MessageList.tsx`): paginated `Message` rows with a status filter
   (queued / sent / failed) and per-row detail.
 - **Queries:** `queries/message.queries.ts` — `useMessages(query)`,
   `useMessage(id)`, `useCreateMessage`; create invalidates the messages list key.
@@ -43,7 +43,7 @@ Base `${NEXT_PUBLIC_API_URL}/api/v1`, envelope; called only from
 - `features/message/components/{message-compose-form,message-list}.tsx`.
 - Shared UI: `field`/`input`/`textarea`/`label`, `select`/`native-select`
   (channel + status filter), `button`, `table`, `badge` (status), `dialog`/`sheet`
-  (detail), `pagination`/`pager`, `empty`, `skeleton`, `sonner`; `use-pagination`,
+  (detail), `pagination`/`pager`, `empty`, `skeleton`, `sonner`; `usePagination`,
   `use-toast` hooks.
 
 ## Acceptance criteria

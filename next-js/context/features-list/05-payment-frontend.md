@@ -17,12 +17,12 @@ through TanStack Query in the dashboard shell.
 ## Scope
 
 - **Route:** `src/app/[locale]/(protected)/payments/page.tsx` (thin) → renders
-  `features/payment/pages/payments-page.tsx`.
-- **Payments list** (`payment-list.tsx`): paginated `Payment` rows with a status
+  `features/payment/pages/PaymentsPage.tsx`.
+- **Payments list** (`PaymentList.tsx`): paginated `Payment` rows with a status
   filter and a per-row refund action.
-- **Create payment** (`payment-create-form.tsx`): Zod-validated form (amount /
+- **Create payment** (`PaymentCreateForm.tsx`): Zod-validated form (amount /
   currency / metadata) calling `createPayment`.
-- **Invoices list** (`invoice-list.tsx`): paginated `Invoice` rows with a status
+- **Invoices list** (`InvoiceList.tsx`): paginated `Invoice` rows with a status
   filter and a per-row pay action.
 - **Queries:** `queries/payment.queries.ts` — `usePayments(query)`,
   `useCreatePayment`, `useRefundPayment`, `useInvoices(query)`, `usePayInvoice`;
@@ -49,7 +49,7 @@ Base `${NEXT_PUBLIC_API_URL}/api/v1`, envelope; called only from
 - `features/payment/components/{payment-list,payment-create-form,invoice-list}.tsx`.
 - Shared UI: `table`, `badge` (status), `select`/`native-select` (filter), `dialog`
   (create/refund/pay confirm), `field`/`input`/`label`, `button`,
-  `pagination`/`pager`, `empty`, `skeleton`, `sonner`; `use-pagination`,
+  `pagination`/`pager`, `empty`, `skeleton`, `sonner`; `usePagination`,
   `use-toast` hooks.
 
 ## Acceptance criteria

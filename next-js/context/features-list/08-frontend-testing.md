@@ -66,7 +66,7 @@ All tests in this feature follow `context/architecture.md` → **Test structure*
 
 - `landing.spec.ts` — marketing hero renders at `/en`; **axe** a11y (no
   critical/serious WCAG 2a/2aa violations).
-- `route-guard.spec.ts` — unauthenticated `/en/dashboard` → `/en/sign-in`.
+- `routeGuard.spec.ts` — unauthenticated `/en/dashboard` → `/en/sign-in`.
 - `auth.spec.ts` — sign-in happy path (`/en/sign-in` → `/en/dashboard`, token
   persisted) and sign-out (dashboard → public `/sign-in`, token cleared). Backend
   envelopes are mocked with `page.route` (no live API).

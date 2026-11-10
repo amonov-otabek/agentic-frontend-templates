@@ -49,7 +49,7 @@ to the API through a single typed `fetch` client.
 | Role | Description |
 | --- | --- |
 | user | standard authenticated account; sees the dashboard sections |
-| admin | elevated access (e.g. the `/users` admin surface); gated by `use-permission` |
+| admin | elevated access (e.g. the `/users` admin surface); gated by `usePermission` |
 | _(RBAC)_ | roles/permissions come from the backend; the client reflects them, never grants them |
 
 ## Key constraints

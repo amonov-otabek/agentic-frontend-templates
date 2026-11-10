@@ -59,7 +59,7 @@ On a non-2xx status, a `false` envelope, or a parse failure, the client throws
 
 - Request: `?page=1&limit=20` query params (sent via `api.getPaginated`, `options.params`).
 - Response: items in `data`, counts in `meta: { total, page, limit }`. Pages compute
-  `totalPages = ceil(total / limit)`; see `shared/hooks/use-pagination.ts`.
+  `totalPages = ceil(total / limit)`; see `shared/hooks/usePagination.ts`.
 
 ## Validation convention
 

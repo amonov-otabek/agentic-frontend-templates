@@ -21,7 +21,7 @@ against the backend analytic API.
 - **Events chart** (`components/events-chart`) — time-series visualization built with
   `recharts` (3.x) using the chart token ramp (`--chart-1…5`); wraps `shared/components/ui/chart`.
 - **Event list** (`components/event-list`) — paginated table of analytics events
-  (`?page&limit`), using `shared/hooks/use-pagination` + the `pager` widget.
+  (`?page&limit`), using `shared/hooks/usePagination` + the `pager` widget.
 - **Queries** (`queries/analytics.queries`) — `useDashboard` (summary) and `useEvents`
   (paginated); typed via `types/analytics.types` (`DashboardSummary`, `AnalyticsEvent`,
   `EventListQuery`).
@@ -39,7 +39,7 @@ Base `/api/v1/analytics`, envelope `{ success, data, meta? }`.
 
 - `features/analytic/components/{stat-cards,events-chart,event-list}`.
 - shadcn `card`, `chart`, `table`, `skeleton`, `empty`, `badge`; widgets `pager`;
-  `recharts`; `shared/hooks/use-pagination`; `DashboardLayout`.
+  `recharts`; `shared/hooks/usePagination`; `DashboardLayout`.
 
 ## Acceptance criteria
 

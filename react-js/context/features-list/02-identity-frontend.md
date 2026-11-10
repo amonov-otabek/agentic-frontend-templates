@@ -30,7 +30,7 @@ user-management surface gated by role.
   list + revoke / revoke-all.
 - **Admin users page** (`features/identity/pages/users-page`, `/users`) — paginated user
   list, detail, toggle-active, role assignment, delete; roles list. Gated by role via
-  `shared/hooks/use-permission`.
+  `shared/hooks/usePermission`.
 - **Session / token handling** (`services/auth.service.ts`) — persist access + refresh in
   `localStorage`, hydrate via `loadSession()`, in-memory bearer; refresh-token rotation;
   forced sign-out (clear tokens + redirect `/sign-in`) on `401/403`; pending-2FA token in
@@ -70,7 +70,7 @@ Base `/api/v1`, envelope `{ success, data, meta? }`. Branch on `error.code` / `e
   `roles-table`.
 - shadcn primitives (`button`, `card`, `input`, `field`, `label`, `tabs`, `table`,
   `dialog`, `alert-dialog`, `badge`, `input-otp`, `pagination`, `sonner`), `shared/hooks`
-  (`use-permission`, `use-pagination`, `use-toast`), `AuthLayout` / `DashboardLayout`.
+  (`usePermission`, `usePagination`, `use-toast`), `AuthLayout` / `DashboardLayout`.
 
 ## Acceptance criteria
 
@@ -86,7 +86,7 @@ Base `/api/v1`, envelope `{ success, data, meta? }`. Branch on `error.code` / `e
       verify → disable.
 - [ ] Settings page edits profile, lists + revokes sessions (single + all), and manages 2FA.
 - [ ] Admin users page lists (paginated), shows detail, toggles active, assigns a role,
-      and deletes — gated by `use-permission`; non-admins cannot reach it.
+      and deletes — gated by `usePermission`; non-admins cannot reach it.
 - [ ] Server field errors (`error.fields`) map onto the right form inputs; assertions
       branch on `error.code`, never message text.
 - [ ] All copy + validation errors localized (en/ru/uz); auth state in the Zustand store;

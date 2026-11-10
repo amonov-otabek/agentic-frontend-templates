@@ -45,7 +45,7 @@ Base `/api/v1`, envelope `{ success, data, meta? }`.
 - `features/payment/components/{payment-list,payment-create-form,invoice-list}`.
 - shadcn `table`, `card`, `input`, `field`, `select`/`native-select`, `button`,
   `dialog`/`alert-dialog` (refund/pay confirm), `badge`, `skeleton`, `empty`, `sonner`;
-  widgets `pager`; `shared/hooks/use-pagination`; `DashboardLayout`.
+  widgets `pager`; `shared/hooks/usePagination`; `DashboardLayout`.
 
 ## Acceptance criteria
 

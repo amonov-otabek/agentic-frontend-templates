@@ -48,10 +48,10 @@ guards its `(protected)` routes — so feature slices can be built on a hardened
 - **App Router shell + route groups:** `src/app/layout.tsx` (root html),
   `src/app/[locale]/layout.tsx` (locale provider wrapper), route groups
   `(auth)`, `(protected)`, `(public)` each with their own `layout.tsx`; the
-  `(protected)` layout renders the dashboard shell (`src/layout/dashboard-layout.tsx`).
+  `(protected)` layout renders the dashboard shell (`src/layout/DashboardLayout.tsx`).
 - **Auth guard:** the `(protected)` layout redirects unauthenticated users to the
   `(auth)` sign-in route (client-side guard reading the persisted access token).
-- **Providers:** `src/shared/components/provider/providers.tsx` composing
+- **Providers:** `src/shared/components/provider/Providers.tsx` composing
   `I18nProvider` → `ThemeProvider` → `QueryProvider`.
 - **Out of scope:** auth/identity logic & pages (FEAT-02), any domain feature
   (FEAT-03…07), the marketing landing content (FEAT-09), tests (FEAT-08).
@@ -68,9 +68,9 @@ guards its `(protected)` routes — so feature slices can be built on a hardened
 - `src/styles/globals.css` (token source); `shared/components/provider/*`
   (query/theme/i18n providers); `shared/components/widgets/{locale-switch,theme-toggle,icons,sticky-header,pager}`;
   `shared/components/ui/*` (shadcn-on-`@base-ui/react` primitives — button, card,
-  input, etc.); `src/layout/dashboard-layout.tsx` + chrome (`app-sidebar`,
+  input, etc.); `src/layout/DashboardLayout.tsx` + chrome (`app-sidebar`,
   `dashboard-header`, `user-nav`); `shared/libs/{api,store,validators,utils}.ts`;
-  `shared/hooks/*` (`use-permission`, `use-pagination`, `use-mobile`, `use-toast`, …).
+  `shared/hooks/*` (`usePermission`, `usePagination`, `use-mobile`, `use-toast`, …).
 
 ## Acceptance criteria
 

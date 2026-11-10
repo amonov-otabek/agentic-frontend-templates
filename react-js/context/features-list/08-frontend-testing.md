@@ -70,9 +70,9 @@ All tests in this feature follow `context/architecture.md` → **Test structure*
 ### E2E (Playwright — 4 files, 8 tests, all green, chromium)
 
 - `e2e/landing.spec.ts` — marketing hero/CTAs + axe (no serious/critical violations).
-- `e2e/route-guard.spec.ts` — unauthenticated `/dashboard` → `/sign-in`; public route stays
+- `e2e/routeGuard.spec.ts` — unauthenticated `/dashboard` → `/sign-in`; public route stays
   reachable.
-- `e2e/auth-flow.spec.ts` — sign-in happy path lands on `/dashboard` (asserts stored access
+- `e2e/authFlow.spec.ts` — sign-in happy path lands on `/dashboard` (asserts stored access
   token); sign-out returns to `/sign-in` and clears the token. Backend mocked via
   `page.route`.
 - `e2e/preferences.spec.ts` — locale switch persists across reload (`i18nextLng`); theme
@@ -82,7 +82,7 @@ All tests in this feature follow `context/architecture.md` → **Test structure*
 
 - Coverage is wired (`test:coverage`) but the ≥80% threshold is **not enforced** and the
   numbers were not measured/asserted as part of this work.
-- Unit tests do not yet cover `use-pagination` / `use-permission` hooks.
+- Unit tests do not yet cover `usePagination` / `usePermission` hooks.
 - E2E does not include a dedicated read-flow assertion per dashboard feature (dashboard is
   reached via the auth flow, but per-feature data reads are not separately asserted).
 - Axe assertions run on the public landing page only; sign-in / dashboard / settings axe
@@ -114,7 +114,7 @@ All tests in this feature follow `context/architecture.md` → **Test structure*
       persistence, with the backend mocked via `page.route`; axe passes on the landing page.
 - [x] Component tests assert on `error.code` / `ApiError.fields`, never localized message text.
 - [ ] ≥80% coverage threshold enforced and measured (remaining gap).
-- [ ] `use-pagination` / `use-permission` unit tests, per-feature read-flow e2e, axe on
+- [ ] `usePagination` / `usePermission` unit tests, per-feature read-flow e2e, axe on
       sign-in / dashboard / settings, and CI wiring (remaining gaps).
 
 ## Tasks
@@ -128,6 +128,6 @@ All tests in this feature follow `context/architecture.md` → **Test structure*
       locale switch, theme toggle (backend mocked via `page.route`).
 - [x] Axe on the public landing page (no serious/critical violations).
 - [ ] Enforce ≥80% coverage threshold and measure it.
-- [ ] Unit tests for `use-pagination` / `use-permission`.
+- [ ] Unit tests for `usePagination` / `usePermission`.
 - [ ] Per-feature read-flow e2e + axe on sign-in / dashboard / settings.
 - [ ] Wire tests + coverage + e2e into CI alongside the build gate.

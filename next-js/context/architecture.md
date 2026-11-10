@@ -62,8 +62,8 @@ src/
 │   ├── components/
 │   │   ├── ui/                   ← shadcn primitives (button, card, table, dialog, …)
 │   │   ├── widgets/              ← composed shared widgets (icons, locale-switch, theme-toggle, pager)
-│   │   └── provider/             ← providers (query, theme, i18n) composed in providers.tsx
-│   ├── hooks/                    ← use-permission, use-pagination, use-mobile, use-toast, …
+│   │   └── provider/             ← providers (query, theme, i18n) composed in Providers.tsx
+│   ├── hooks/                    ← usePermission, usePagination, use-mobile, use-toast, …
 │   ├── libs/                     ← api.ts (HTTP client), store.ts, validators.ts, utils.ts (cn)
 │   └── i18n/                     ← routing, navigation, request + messages/{en,ru,uz}.json
 ├── styles/globals.css            ← Tailwind v4 @theme + token definitions (single source)
@@ -112,8 +112,8 @@ Source → spec mapping:
 
 ```
 src/app/layout.tsx                                → test/main.spec.tsx (root layout + providers)
-src/features/auth/validators/sign-in.ts           → test/features/auth/validators/sign-in.spec.ts
-src/shared/hooks/use-permission.ts                → test/shared/hooks/use-permission.spec.ts
+src/features/auth/validators/signIn.ts            → test/features/auth/validators/signIn.spec.ts
+src/shared/hooks/usePermission.ts                 → test/shared/hooks/usePermission.spec.ts
 ```
 
 1. **One location only.** Every test file lives under `test/` at the project root — never next to a source file, never inside a module/feature folder, never in a second test folder.

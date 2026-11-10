@@ -111,7 +111,7 @@ dialog, input, badge, tabs, sidebar, sonner, …) — reuse them; do not re-crea
 
 ```markdown
 ### ComponentName
-- Path: `src/features/<feature>/components/component-name.tsx`
+- Path: `src/features/<feature>/components/ComponentName.tsx`
 - Purpose: one line
 - Variants/props: the public API surface
 - Used by: pages/features using it

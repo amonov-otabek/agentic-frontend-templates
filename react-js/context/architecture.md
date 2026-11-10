@@ -14,7 +14,7 @@ client for `express-monolith-api`; keep it locked.
 | Routing               | React Router 7 (`createBrowserRouter` / data router)   | client-side routes |
 | Styling               | Tailwind CSS v4 (`@tailwindcss/vite`, CSS-first `@theme`) | tokens + utilities |
 | Component primitives   | shadcn (`style: base-nova`) over `@base-ui/react`; `class-variance-authority`, `clsx`, `tailwind-merge` | UI kit |
-| Icons                 | `lucide-react` (wrapped in `shared/components/widgets/icons.tsx`) | iconography |
+| Icons                 | `lucide-react` (wrapped in `shared/components/widgets/Icons.tsx`) | iconography |
 | Server state          | TanStack Query 5 (`@tanstack/react-query`)             | data fetching/cache |
 | Client state          | Zustand 5 (`shared/libs/store.ts` + `createSelectors`) | local/UI/auth state |
 | HTTP client           | native `fetch` wrapper (`shared/libs/api.ts`)          | typed API calls    |
@@ -56,8 +56,8 @@ src/
 ├── middleware.ts             ← inert placeholder (SPAs have no server middleware; see file)
 ├── app/
 │   ├── router.tsx            ← createBrowserRouter; mounts every layout + page
-│   ├── home-page.tsx         ← public landing
-│   └── dashboard-page.tsx    ← dashboard index
+│   ├── HomePage.tsx          ← public landing
+│   └── DashboardPage.tsx     ← dashboard index
 ├── layout/                   ← shell chrome: public/auth/dashboard layouts, headers, sidebar, footer
 ├── features/<name>/          ← one folder per backend domain module (see Feature shape)
 ├── shared/
@@ -65,7 +65,7 @@ src/
 │   │   ├── ui/               ← shadcn primitives (button, card, table, dialog, …) — do not hand-edit
 │   │   ├── widgets/          ← app-specific shared widgets (icons, pager, theme-toggle, …)
 │   │   └── provider/         ← Providers, query/theme/i18n providers
-│   ├── hooks/                ← cross-feature hooks (use-mobile, use-pagination, use-permission, …)
+│   ├── hooks/                ← cross-feature hooks (use-mobile, usePagination, usePermission, …)
 │   ├── i18n/                 ← i18next setup + messages/{en,ru,uz}.json + routing
 │   └── libs/                 ← api.ts (HTTP client), store.ts (zustand), utils.ts (cn), validators.ts
 └── styles/
@@ -115,7 +115,7 @@ Source → spec mapping:
 
 ```
 src/main.tsx                                      → test/main.spec.tsx
-src/features/auth/queries/use-sign-in.ts          → test/features/auth/queries/use-sign-in.spec.ts
+src/features/auth/queries/useSignIn.ts            → test/features/auth/queries/useSignIn.spec.ts
 src/shared/libs/api.ts                            → test/shared/libs/api.spec.ts
 ```
 
@@ -157,7 +157,7 @@ src/shared/libs/api.ts                            → test/shared/libs/api.spec.
   via `loadSession()`.
 - **Route guards** are UX-only: dashboard routes check `isAuthenticated()` and redirect
   to `/sign-in`. The backend is the source of truth for authz.
-- **Providers** are composed once in `shared/components/provider/providers.tsx`
+- **Providers** are composed once in `shared/components/provider/Providers.tsx`
   (i18n → theme → query → toaster) and mounted in `main.tsx`.
 - **Response envelope** (mirrors backend, `shared/libs/api.ts`):
   - success: `{ success: true, data, meta? }`

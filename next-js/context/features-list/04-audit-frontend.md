@@ -17,16 +17,16 @@ resolved) — paginated and rendered in the dashboard shell.
 ## Scope
 
 - **Route:** `src/app/[locale]/(protected)/audit/page.tsx` (thin) → renders
-  `features/audit/pages/audit-page.tsx`.
-- **Audit log table** (`audit-log-table.tsx`): paginated `AuditLog` rows with
+  `features/audit/pages/AuditPage.tsx`.
+- **Audit log table** (`AuditLogTable.tsx`): paginated `AuditLog` rows with
   filters (`userId`, `action`, `entity`).
-- **Alerts table** (`alert-table.tsx`): paginated `SecurityAlert` rows with filters
+- **Alerts table** (`AlertTable.tsx`): paginated `SecurityAlert` rows with filters
   (`severity`, `resolved`) and a per-row resolve action.
 - **Queries:** `queries/audit.queries.ts` — `useAuditLogs(query)`,
   `useAlerts(query)`, `useResolveAlert` (invalidates the alerts key on success).
 - **Types:** `types/audit.types.ts` — `AuditLog`, `SecurityAlert`,
   `AuditListQuery`, `AlertListQuery`.
-- **RBAC:** gated by `use-permission` (admin) + the `(protected)` guard.
+- **RBAC:** gated by `usePermission` (admin) + the `(protected)` guard.
 - **Out of scope:** audit-event writing (backend-owned); alert configuration.
 
 ## Consumed API
@@ -43,11 +43,11 @@ Base `${NEXT_PUBLIC_API_URL}/api/v1`, envelope; called only from
 - `features/audit/components/{audit-log-table,alert-table}.tsx`.
 - Shared UI: `table`, `badge`, `select`/`native-select` (filters), `button`,
   `dialog`/`alert-dialog` (resolve confirm), `pagination`/`pager`, `empty`,
-  `skeleton`; `use-pagination`, `use-permission`, `use-toast` hooks.
+  `skeleton`; `usePagination`, `usePermission`, `use-toast` hooks.
 
 ## Acceptance criteria
 
-- [ ] Audit route is guarded and admin-gated (`use-permission`); renders in the
+- [ ] Audit route is guarded and admin-gated (`usePermission`); renders in the
       dashboard shell.
 - [ ] Audit-log table paginates against `GET /audit` and filters by user / action /
       entity.

@@ -15,6 +15,7 @@ UI specifics live in `context/ui-rules.md` + `context/ui-context.md`; this file 
 
 ## TypeScript
 
+- **File names (HARD):** PascalCase for pages, components, layouts and providers; camelCase for hooks (`useX.ts`) and every other module; lowercase/kebab-case folders; generated and framework-reserved files keep their names — full table in `context/ui-rules.md` → File naming.
 - Strict mode (`strict: true`). No `any` — use precise types or `unknown` + narrowing.
   No `as` to silence type errors.
 - ES2017 target, `moduleResolution: bundler`, `jsx: react-jsx`. Use the `@/*` path alias

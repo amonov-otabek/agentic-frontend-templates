@@ -16,6 +16,7 @@ Implementation rules for all code. This is the **Vite + React SPA** client for
 
 ## TypeScript
 
+- **File names (HARD):** PascalCase for pages, components, layouts and providers; camelCase for hooks (`useX.ts`) and every other module; lowercase/kebab-case folders; generated and framework-reserved files keep their names — full table in `context/ui-rules.md` → File naming.
 - Strict mode on (`noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`,
   `verbatimModuleSyntax`, `erasableSyntaxOnly`).
 - No `any` — use precise types or `unknown` + narrowing. No `as` to silence errors.

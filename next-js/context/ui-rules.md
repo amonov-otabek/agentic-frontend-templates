@@ -17,6 +17,31 @@ file says how to use it. Builders read both before any UI task; QA enforces both
 4. **Check the registry first.** Before building any component, check the registry
    in `context/ui-context.md`. If it exists, reuse it exactly; if you build it, register it.
 
+## File naming (HARD)
+
+Applies to every file a Builder creates or renames. Folders stay lowercase/kebab-case;
+the file name follows what the file exports.
+
+| What | Convention | Examples |
+| --- | --- | --- |
+| Pages (route-level components) | PascalCase + `Page` | `DashboardPage.tsx`, `PurchaseDetailsPage.tsx` |
+| Components | PascalCase | `PurchaseTable.tsx`, `StatusBadge.tsx` |
+| Layouts / providers | PascalCase | `DashboardLayout.tsx`, `AppProviders.tsx` |
+| Hooks | camelCase, `use` prefix | `useAuth.ts`, `usePurchases.ts` |
+| Utilities / services / api / validators / stores / types | camelCase | `formatMoney.ts`, `authService.ts`, `purchaseApi.ts`, `signIn.ts` |
+| Tests | source name + `.spec`, at the mirrored path in `test/` | `test/features/purchase/components/PurchaseTable.spec.tsx` |
+| Folders | lowercase or kebab-case | `purchase-requests/`, `components/`, `shared/` |
+| Barrel files | `index.ts` | `features/purchase/index.ts` |
+
+Exceptions — these keep the name their tool expects, never renamed by hand:
+- Generated shadcn primitives in `shared/components/ui/` stay lowercase/kebab-case (`button.tsx`, `dialog.tsx`, `dropdown-menu.tsx`), as do other CLI-generated files (`hooks/use-mobile.ts`, `hooks/use-toast.ts`). Add them with the shadcn CLI only.
+- App Router special files keep Next.js names: `page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`, `not-found.tsx`, `template.tsx`, `default.tsx`, `route.ts`, plus `proxy.ts`. Route folders are URL segments: lowercase/kebab-case (`[locale]/`, `(protected)/`, `purchase-requests/`). Route files stay thin and render a `features/*/pages/<Name>Page.tsx`.
+- Tool config files: `next.config.ts`, `tsconfig*.json`, `components.json`.
+
+Existing kebab-case files are legacy drift: new files follow this table, but never rename an
+existing file as a side effect of other work. Renames are their own refactor task (move the
+file, update every import, move its spec), and the developer starts it.
+
 ## Layout
 
 - _Max content width: e.g. `1440px`, centered, horizontal padding per spacing tokens._

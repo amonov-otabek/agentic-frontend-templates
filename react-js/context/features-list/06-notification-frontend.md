@@ -46,7 +46,7 @@ Base `/api/v1/notifications`, envelope `{ success, data, meta? }`.
 
 - `features/notification/components/{notification-list,preferences-form}`.
 - shadcn `card`, `table`/`item`, `switch`, `checkbox`, `badge`, `button`, `tabs`,
-  `skeleton`, `empty`, `sonner`; widgets `pager`; `shared/hooks/use-pagination`;
+  `skeleton`, `empty`, `sonner`; widgets `pager`; `shared/hooks/usePagination`;
   `DashboardLayout`.
 
 ## Acceptance criteria

@@ -21,8 +21,8 @@ visitors into sign-ups — fully public, statically rendered where possible.
 - **Landing** (`(public)/page.tsx`): hero (tagline / title / subtitle), primary CTAs
   (`get-started` → `(auth)` sign-up, `learn-more`), value-prop / how-it-works
   sections, footer. Expand the existing minimal landing into the marketing page(s).
-- **Marketing shell:** `src/layout/public-header.tsx` (logo, locale switch, theme
-  toggle, sign-in / sign-up CTAs) + `src/layout/public-footer.tsx` (links, socials).
+- **Marketing shell:** `src/layout/PublicHeader.tsx` (logo, locale switch, theme
+  toggle, sign-in / sign-up CTAs) + `src/layout/PublicFooter.tsx` (links, socials).
 - **i18n:** all copy through `next-intl` under the `marketing.*` / `common.*` keys in
   `messages/{en,ru,uz}.json`; locale-prefixed routes; instant locale toggle.
 - **SEO / metadata:** per-page `<title>` / meta description / canonical via App

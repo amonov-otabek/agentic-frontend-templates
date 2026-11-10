@@ -40,11 +40,11 @@ all localized and tokens-themed.
 - **Validators:** `validators/auth.validator.ts` (Zod: sign-in/up, forgot/reset,
   2FA, profile, password) — field errors map onto form fields via the envelope's
   `error.fields`.
-- **Profile / settings hub** (`pages/settings-page.tsx`): edit profile
+- **Profile / settings hub** (`pages/SettingsPage.tsx`): edit profile
   (`profile-form`), change password (`password-form`), 2FA setup/enable/disable
   (`two-factor-card`), active sessions list + revoke (`sessions-table`).
-- **RBAC-gated admin** (`pages/users-page.tsx`): user list/search, detail,
-  toggle-active, role assign, delete, roles list — gated by the `use-permission`
+- **RBAC-gated admin** (`pages/UsersPage.tsx`): user list/search, detail,
+  toggle-active, role assign, delete, roles list — gated by the `usePermission`
   hook (admin role) and the `(protected)` guard.
 - **Out of scope:** OAuth provider linking and address book (not in the template
   surface); bespoke settings redesigns.
@@ -69,8 +69,8 @@ Base `${NEXT_PUBLIC_API_URL}/api/v1`, envelope `{ success, data, error, meta }`.
   `two-factor-card`, `sessions-table`, `users-table`, `roles-table`.
 - `(auth)/layout.tsx` auth shell; `(protected)/layout.tsx` dashboard guard shell.
 - Shared UI primitives (`button`, `card`, `input`, `field`, `label`, `input-otp`,
-  `table`, `dialog`, `badge`, `tabs`, `sonner`); `use-permission`, `use-toast`,
-  `use-pagination` hooks; `Link`/`redirect` from `shared/i18n/navigation`.
+  `table`, `dialog`, `badge`, `tabs`, `sonner`); `usePermission`, `use-toast`,
+  `usePagination` hooks; `Link`/`redirect` from `shared/i18n/navigation`.
 
 ## Acceptance criteria
 
@@ -86,7 +86,7 @@ Base `${NEXT_PUBLIC_API_URL}/api/v1`, envelope `{ success, data, error, meta }`.
       backend rate limits (surfaced via `error.code`).
 - [ ] Settings: profile edit persists; password change works; 2FA setup → enable
       (backup codes shown) → disable cycle; sessions list + revoke / revoke-all.
-- [ ] Admin users area gated by `use-permission` (admin) + the route guard: list,
+- [ ] Admin users area gated by `usePermission` (admin) + the route guard: list,
       detail, toggle-active, role assign, delete, roles list.
 - [ ] Zod field errors map onto form fields; assertions branch on `error.code`.
 - [ ] Tokens-only styling, a11y, lint, typecheck, build, and tests pass.

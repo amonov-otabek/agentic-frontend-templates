@@ -52,7 +52,7 @@ i18next, and builds to a static `dist/` served by `nginx:alpine` with SPA fallba
 - **Route guard** — dashboard routes check `isAuthenticated()` and redirect unauthenticated
   users to `/sign-in`; authenticated users skip the auth group. Guards are UX-only — the
   backend remains the authz source of truth (a `401/403` clears the session).
-- **Providers** (`src/shared/components/provider/providers.tsx`) — compose once in order
+- **Providers** (`src/shared/components/provider/Providers.tsx`) — compose once in order
   i18n → theme → TanStack Query → toaster (`sonner`); mounted in `main.tsx` wrapping
   `<RouterProvider/>`.
 - **Production build** — `pnpm build` (`tsc -b` project refs, then `vite build` → static

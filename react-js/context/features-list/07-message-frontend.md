@@ -42,7 +42,7 @@ Base `/api/v1/messages`, envelope `{ success, data, meta? }`.
 - `features/message/components/{message-compose-form,message-list}`.
 - shadcn `card`, `table`, `input`, `textarea`, `field`, `select`/`native-select`,
   `button`, `badge`, `skeleton`, `empty`, `sonner`; widgets `pager`;
-  `shared/hooks/use-pagination`; `DashboardLayout`.
+  `shared/hooks/usePagination`; `DashboardLayout`.
 
 ## Acceptance criteria
 
