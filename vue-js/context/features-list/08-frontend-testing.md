@@ -16,6 +16,10 @@ Playwright + axe) and cover the SPA: unit/component tests for forms, queries,
 stores, the API client, and feature components; Playwright e2e for the critical
 flows; and automated a11y checks — all wired into runnable scripts and CI.
 
+## Test layout (HARD)
+
+All tests in this feature follow `context/architecture.md` → **Test structure**: `test/` — `main.spec.ts(x)`, `app.spec.ts(x)`, `setup.ts`, `helpers.ts(x)`, folders mirroring `src/` (`*.spec.ts(x)`), `e2e/` (`*.e2e-spec.ts`, own `helpers.ts` allowed). Any path elsewhere in this spec that sits outside that layout (`src/**/tests/`, `src/test/`, a root `tests/` or `e2e/`, `*.test.*`, `conftest.py`) describes the current/legacy suite — it is migrated by this feature, never extended.
+
 ## What exists (real toolchain, scripts, suites)
 
 ### Toolchain & config (installed, working)
@@ -88,6 +92,7 @@ flows; and automated a11y checks — all wired into runnable scripts and CI.
 
 ## Status vs. acceptance criteria
 
+- [ ] Test layout matches `context/architecture.md` → Test structure: every existing test is moved to its mirrored path and renamed to the stack suffix; nothing test-related remains under the source root; runner config (globs, setup file, e2e dir, coverage root) points at the test folder; the collected-test count is not lower after the move.
 - [x] Vitest + Testing Library + Playwright + axe installed and configured with `@`-alias resolution and a shared test setup.
 - [x] `test`, `test:coverage`, and `e2e` scripts run green locally.
 - [~] Coverage: branch ~83–86% and function ~72–84% on exercised code, but the v8

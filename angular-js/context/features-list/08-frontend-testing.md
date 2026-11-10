@@ -17,11 +17,16 @@ component/unit tests (`ng test`), end-to-end tests (Playwright) for the critical
 flows, and automated accessibility checks — so every feature ships verified and
 regressions are caught before merge.
 
+## Test layout (HARD)
+
+All tests in this feature follow `context/architecture.md` → **Test structure**: `test/` — `main.spec.ts(x)`, `app.spec.ts(x)`, `setup.ts`, `helpers.ts(x)`, folders mirroring `src/` (`*.spec.ts(x)`), `e2e/` (`*.e2e-spec.ts`, own `helpers.ts` allowed). Any path elsewhere in this spec that sits outside that layout (`src/**/tests/`, `src/test/`, a root `tests/` or `e2e/`, `*.test.*`, `conftest.py`) describes the current/legacy suite — it is migrated by this feature, never extended.
+
 ## Scope
 
 ### Component / unit tests (`ng test`)
 
-- Specs colocated in each `features/<name>/tests/` and `core/`/`shared/` test files.
+- Specs in root `test/`, mirroring `src/` (`test/app/features/<name>/…`, `test/app/core/…`,
+  `test/app/shared/…`); generate with `--skip-tests` so the CLI never colocates a spec.
 - **Core:** `api.service` (envelope unwrap, error mapping), `auth.interceptor`
   (bearer attach + `401` refresh-retry), `error.interceptor`, `auth.guard` +
   `role.guard`, `auth.service` token store.
@@ -68,6 +73,7 @@ Critical flows against the running app (mocked or test backend):
 
 ## Acceptance criteria
 
+- [ ] Test layout matches `context/architecture.md` → Test structure: every existing test is moved to its mirrored path and renamed to the stack suffix; nothing test-related remains under the source root; runner config (globs, setup file, e2e dir, coverage root) points at the test folder; the collected-test count is not lower after the move.
 - [ ] Core (`api.service`, both interceptors, both guards, `auth.service`) unit-tested,
       including envelope unwrap, `401` refresh-retry, and error mapping.
 - [ ] Each feature has component/page specs covering its state matrix; HTTP mocked via

@@ -78,6 +78,10 @@ Treat as locked once the first feature is built.
 
 ## Testing
 
+- **Where tests live (HARD):** every test file goes in `test/` (`main`, `app`, `setup`, `helpers`, `e2e/`), at the path that
+  mirrors its source file — see `context/architecture.md` → **Test structure**. Never beside a
+  source file, never inside a module/feature folder. `setup` keeps the suite
+  self-contained: tests run on a clean checkout with no developer `.env`.
 - Jest (or Karma/Jasmine) for unit/component specs; new behavior ships with a
   happy-path test plus at least one edge/error case. Playwright for e2e on critical
   flows (auth, primary user journeys).

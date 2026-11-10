@@ -95,6 +95,10 @@ Implementation rules for all code. This is the **Vite + React SPA** client for
 
 ## Testing
 
+- **Where tests live (HARD):** every test file goes in `test/` (`main`, `app`, `setup`, `helpers`, `e2e/`), at the path that
+  mirrors its source file — see `context/architecture.md` → **Test structure**. Never beside a
+  source file, never inside a module/feature folder. `setup` keeps the suite
+  self-contained: tests run on a clean checkout with no developer `.env`.
 - New behavior ships with a happy-path test plus at least one edge/error case
   (component/hook tests; Playwright for critical e2e flows).
 - Assert on `error.code`, not localized message text.

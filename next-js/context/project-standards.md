@@ -87,6 +87,10 @@ UI specifics live in `context/ui-rules.md` + `context/ui-context.md`; this file 
 
 ## Testing
 
+- **Where tests live (HARD):** every test file goes in `test/` (`main`, `app`, `setup`, `helpers`, `e2e/`), at the path that
+  mirrors its source file — see `context/architecture.md` → **Test structure**. Never beside a
+  source file, never inside a module/feature folder. `setup` keeps the suite
+  self-contained: tests run on a clean checkout with no developer `.env`.
 - New behavior ships with at least a happy-path check plus one edge/error case where a test
   harness exists; pre-existing checks stay green. The `next build` compile gate must pass.
 

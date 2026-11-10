@@ -16,6 +16,10 @@ A working test suite for the SPA: Vitest + React Testing Library for component/u
 against a `vite preview` build with intercepted backend responses, and automated a11y
 assertions — wired to pnpm scripts.
 
+## Test layout (HARD)
+
+All tests in this feature follow `context/architecture.md` → **Test structure**: `test/` — `main.spec.ts(x)`, `app.spec.ts(x)`, `setup.ts`, `helpers.ts(x)`, folders mirroring `src/` (`*.spec.ts(x)`), `e2e/` (`*.e2e-spec.ts`, own `helpers.ts` allowed). Any path elsewhere in this spec that sits outside that layout (`src/**/tests/`, `src/test/`, a root `tests/` or `e2e/`, `*.test.*`, `conftest.py`) describes the current/legacy suite — it is migrated by this feature, never extended.
+
 ## What exists today
 
 ### Tooling & config (installed)
@@ -99,6 +103,7 @@ assertions — wired to pnpm scripts.
 
 ## Acceptance criteria
 
+- [ ] Test layout matches `context/architecture.md` → Test structure: every existing test is moved to its mirrored path and renamed to the stack suffix; nothing test-related remains under the source root; runner config (globs, setup file, e2e dir, coverage root) points at the test folder; the collected-test count is not lower after the move.
 - [x] Vitest (jsdom) + Testing Library + Playwright + axe are installed and configured;
       `test`, `test:watch`, `test:coverage`, `test:e2e`, `test:e2e:ui` scripts run.
 - [x] `renderWithProviders` (i18n + Query + router) and `src/test/setup.ts` exist and back the suite.

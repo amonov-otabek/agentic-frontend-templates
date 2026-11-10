@@ -76,6 +76,10 @@ project — read alongside `context/ui-rules.md` for visual rules. Treat as lock
 
 ## Testing
 
+- **Where tests live (HARD):** every test file goes in `test/` (`main`, `app`, `setup`, `helpers`, `e2e/`), at the path that
+  mirrors its source file — see `context/architecture.md` → **Test structure**. Never beside a
+  source file, never inside a module/feature folder. `setup` keeps the suite
+  self-contained: tests run on a clean checkout with no developer `.env`.
 - New behavior ships with at least a happy-path check plus one edge/error case
   (component or composable level). Pre-existing checks stay green; the `pnpm build`
   (`vue-tsc`) gate must pass — a task that breaks it is not done.
